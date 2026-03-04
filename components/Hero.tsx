@@ -36,9 +36,9 @@ export default function Hero() {
 
         <div className="mt-16 grid grid-cols-3 gap-8 border-t border-gray-100 pt-10 max-w-2xl">
           {[
-            { stat: "6-month", label: "project cohorts" },
-            { stat: "90%", label: "developer-delivered quality" },
-            { stat: "Real", label: "clients, real users" },
+            { stat: "AI-First", label: "from day one, on every project" },
+            { stat: "~50%", label: "less than traditional agency rates" },
+            { stat: "Real", label: "clients, real users, real impact" },
           ].map(({ stat, label }) => (
             <div key={label}>
               <div className="text-2xl font-bold text-gray-900">{stat}</div>

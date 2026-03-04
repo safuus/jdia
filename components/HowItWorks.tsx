@@ -4,61 +4,107 @@ export default function HowItWorks() {
       <div className="max-w-4xl mx-auto">
         <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-4">The Model</p>
         <h2 className="text-4xl font-bold mb-4">How It Works</h2>
-        <p className="text-gray-600 text-lg mb-16 max-w-2xl">
-          Professional developers lead every project. Students participate through a structured
-          two-path model. AI tools are central from day one.
+        <p className="text-gray-600 text-lg mb-4 max-w-2xl">
+          Professional developers lead every project. Students learn by doing — alongside real work,
+          with real tools, for real clients.
+        </p>
+        <p className="text-gray-500 text-base mb-16 max-w-2xl">
+          Projects run from <strong>1 to 12 months</strong> depending on scope. Student participation
+          and structure adapt to fit — there&apos;s no fixed timeline that applies to every engagement.
         </p>
 
-        {/* Timeline */}
-        <div className="relative">
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-gray-200 md:left-1/2"></div>
+        {/* Two pillars */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="bg-gray-950 text-white rounded-xl p-8">
+            <div className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3">For Clients</div>
+            <h3 className="font-bold text-xl mb-4">Professional delivery, guaranteed</h3>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              Developers handle the critical path. Student involvement never compromises delivery.
+              All code goes through mandatory review. You get what you scoped, on time.
+            </p>
+            <ul className="space-y-2 text-sm text-gray-400">
+              {[
+                "Flexible project timelines: 1–12 months",
+                "AI-accelerated development from day one",
+                "~50% below traditional agency rates",
+                "Senior developer oversight on every commit",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <svg className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {[
-            {
-              phase: "Phase 1 · Months 1–3",
-              title: "Educational Training",
-              description:
-                "Students learn AI coding tools (GitHub Copilot, Cursor, ChatGPT, Claude), modern frameworks, development process, and professional workflows. Training happens alongside real projects — but students are not on the critical path yet.",
-              side: "left",
-            },
-            {
-              phase: "Phase 2A · Months 4–6",
-              title: "Paid Internship Track",
-              description:
-                "Students who qualify enter paid employment at Washington State minimum wage. Real work expectations, real deadlines, real consequences. Approximately 10% of project work: QA testing, documentation, UI components, bug fixes.",
-              side: "right",
-            },
-            {
-              phase: "Phase 2B · Months 4–6",
-              title: "Supervised Learning Track",
-              description:
-                "Students continue as enrolled learners under teacher mentorship. Observe real project work, participate in code reviews, build portfolio projects in parallel. No employment pressure — but no shortcuts either.",
-              side: "left",
-            },
-          ].map(({ phase, title, description }, i) => (
-            <div key={i} className={`relative mb-12 md:w-1/2 pl-12 md:pl-0 ${
-              i % 2 === 0 ? "md:pr-12" : "md:ml-auto md:pl-12"
-            }`}>
-              <div className="absolute left-0 md:left-auto md:right-auto w-8 h-8 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center
-                md:left-[-16px]" style={i % 2 !== 0 ? { left: "-16px" } : { right: "-16px" }}>
-                {i + 1}
-              </div>
-              <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-                <div className="text-blue-600 text-xs font-semibold uppercase tracking-widest mb-2">{phase}</div>
-                <h3 className="font-bold text-lg mb-2">{title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
-              </div>
-            </div>
-          ))}
+          <div className="bg-blue-50 rounded-xl p-8">
+            <div className="text-blue-600 text-xs font-semibold uppercase tracking-widest mb-3">For Students</div>
+            <h3 className="font-bold text-xl mb-4">Learn by building real things</h3>
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              Students enter a structured learning track alongside each project. Depth of participation
+              scales with project length and the student&apos;s progress.
+            </p>
+            <ul className="space-y-2 text-sm text-gray-600">
+              {[
+                "Train on AI tools professionals actually use",
+                "Observe, contribute, and grow — in that order",
+                "Choose paid internship or supervised learning",
+                "Graduate with a deployed product and real references",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <svg className="w-4 h-4 text-blue-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* AI tools callout */}
-        <div className="mt-8 bg-gray-950 text-white rounded-xl p-8">
+        {/* Student paths */}
+        <h3 className="font-bold text-xl mb-2">Two tracks. One standard: build something real.</h3>
+        <p className="text-gray-500 text-sm mb-6">
+          Both tracks challenge students with real work. Senior developers and principals
+          guard quality — so students can push hard without fear of breaking anything for the client.
+        </p>
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="border-2 border-blue-200 bg-blue-50 rounded-xl p-6">
+            <div className="font-semibold text-gray-900 mb-1">Paid Professional Track</div>
+            <div className="text-xs text-blue-600 font-medium mb-3">You ship. You get paid. You build a career.</div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Step into a real development team and own your slice of a live product.
+              You&apos;ll make decisions, hit deadlines, and be held to professional standards —
+              with experienced developers in your corner. Walk away with a paycheck,
+              a portfolio piece, and a professional reference from an actual project.
+            </p>
+          </div>
+          <div className="border border-gray-200 rounded-xl p-6">
+            <div className="font-semibold text-gray-900 mb-1">Immersive Learning Track</div>
+            <div className="text-xs text-gray-500 font-medium mb-3">Go deep. Build your foundation. Ship it anyway.</div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Embedded alongside a real development team, you&apos;ll tackle challenges
+              that no textbook assigns. Build features, break things in a safe environment,
+              fix them with mentor guidance, and learn how senior engineers actually think.
+              Your learning milestone is a deployed project — not a grade.
+            </p>
+          </div>
+        </div>
+
+        {/* AI-First tools */}
+        <div className="bg-gray-950 text-white rounded-xl p-8">
           <h3 className="font-bold text-lg mb-3">AI-First, Not AI-Optional</h3>
-          <p className="text-gray-400 leading-relaxed text-sm">
+          <p className="text-gray-400 leading-relaxed text-sm mb-4">
             GitHub Copilot, Cursor, Claude, ChatGPT — students learn these tools from day one
             because that&apos;s what professional teams use. We don&apos;t teach coding then add AI.
-            We teach AI-augmented development as the baseline.
+            AI-augmented development is the baseline. Every student graduates knowing how to
+            work <em>with</em> AI, not just around it.
+          </p>
+          <p className="text-blue-300 text-sm font-medium">
+            This is what makes our education relevant in 2026 — and what makes our developers
+            faster and more affordable than agencies still working the old way.
           </p>
         </div>
       </div>

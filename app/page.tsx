@@ -4,6 +4,7 @@ import WhatWeAre from "@/components/WhatWeAre";
 import HowItWorks from "@/components/HowItWorks";
 import ForWho from "@/components/ForWho";
 import ProofOfConcept from "@/components/ProofOfConcept";
+import Testimonial from "@/components/Testimonial";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <HowItWorks />
       <ForWho />
       <ProofOfConcept />
+      <Testimonial />
       <CTA />
       <Footer />
     </main>
