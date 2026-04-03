@@ -32,8 +32,8 @@ export default function CTA({
 
         <p className="text-[var(--color-text-muted)] text-sm text-center mt-6">
           Redmond, WA &middot;{" "}
-          <a href="mailto:wa@codingmind.com" className="text-[var(--color-accent)] hover:underline">
-            wa@codingmind.com
+          <a href="mailto:max@justcodeit.academy" className="text-[var(--color-accent)] hover:underline">
+            max@justcodeit.academy
           </a>
         </p>
       </div>

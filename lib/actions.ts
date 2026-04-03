@@ -3,7 +3,7 @@
 import { Resend } from "resend";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "wa@codingmind.com";
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "max@justcodeit.academy";
 
 function getResendClient(): Resend | null {
   if (!RESEND_API_KEY) return null;
@@ -12,7 +12,7 @@ function getResendClient(): Resend | null {
 
 const MISSING_KEY_ERROR: FormState = {
   success: false,
-  error: "Unable to send your message. Please email wa@codingmind.com directly.",
+  error: "Unable to send your message. Please email max@justcodeit.academy directly.",
 };
 
 // ─── Types ───────────────────────────────────────────────────────────
@@ -116,7 +116,7 @@ export async function submitContactForm(
       console.error("Resend error:", error);
       return {
         success: false,
-        error: "Unable to send your message. Please email wa@codingmind.com directly.",
+        error: "Unable to send your message. Please email max@justcodeit.academy directly.",
       };
     }
 
@@ -135,7 +135,7 @@ export async function submitContactForm(
     console.error("Contact form error:", err);
     return {
       success: false,
-      error: "Unable to send your message. Please email wa@codingmind.com directly.",
+      error: "Unable to send your message. Please email max@justcodeit.academy directly.",
     };
   }
 }
@@ -188,7 +188,7 @@ export async function submitApplication(
       console.error("Resend error:", error);
       return {
         success: false,
-        error: "Unable to submit your application. Please email wa@codingmind.com directly.",
+        error: "Unable to submit your application. Please email max@justcodeit.academy directly.",
       };
     }
 
@@ -198,7 +198,7 @@ export async function submitApplication(
         from: "Just Code It Academy <onboarding@resend.dev>",
         to: email,
         subject: "Application received — Just Code It Academy",
-        text: `Hi ${name},\n\nWe received your application to Just Code It Academy! We'll review it and get back to you within 3-5 business days.\n\nIf you have any questions in the meantime, reply to this email or reach out at wa@codingmind.com.\n\nBest,\nThe Just Code It Academy Team\nRedmond, WA`,
+        text: `Hi ${name},\n\nWe received your application to Just Code It Academy! We'll review it and get back to you within 3-5 business days.\n\nIf you have any questions in the meantime, reply to this email or reach out at max@justcodeit.academy.\n\nBest,\nThe Just Code It Academy Team\nRedmond, WA`,
       })
       .catch((err) => console.error("Auto-reply failed:", err));
 
@@ -207,7 +207,7 @@ export async function submitApplication(
     console.error("Application form error:", err);
     return {
       success: false,
-      error: "Unable to submit your application. Please email wa@codingmind.com directly.",
+      error: "Unable to submit your application. Please email max@justcodeit.academy directly.",
     };
   }
 }

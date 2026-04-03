@@ -85,7 +85,7 @@ describe("submitContactForm", () => {
     });
     const result = await submitContactForm(initialState, fd);
     expect(result.success).toBe(false);
-    expect(result.error).toContain("wa@codingmind.com");
+    expect(result.error).toContain("max@justcodeit.academy");
   });
 
   it("returns error with mailto fallback on network exception", async () => {
@@ -99,7 +99,7 @@ describe("submitContactForm", () => {
     });
     const result = await submitContactForm(initialState, fd);
     expect(result.success).toBe(false);
-    expect(result.error).toContain("wa@codingmind.com");
+    expect(result.error).toContain("max@justcodeit.academy");
   });
 });
 
@@ -122,7 +122,7 @@ describe("submitContactForm — missing API key regression", () => {
     });
     const result = await fresh.submitContactForm(initialState, fd);
     expect(result.success).toBe(false);
-    expect(result.error).toContain("wa@codingmind.com");
+    expect(result.error).toContain("max@justcodeit.academy");
 
     // Restore
     process.env.RESEND_API_KEY = original;
@@ -171,6 +171,6 @@ describe("submitApplication", () => {
     });
     const result = await submitApplication(initialState, fd);
     expect(result.success).toBe(false);
-    expect(result.error).toContain("wa@codingmind.com");
+    expect(result.error).toContain("max@justcodeit.academy");
   });
 });

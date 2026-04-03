@@ -43,8 +43,8 @@ export default function ApplyPage() {
                   <p className="text-red-700 text-sm">{state.error}</p>
                   <p className="text-red-500 text-xs mt-1">
                     Or email us directly:{" "}
-                    <a href="mailto:wa@codingmind.com" className="underline">
-                      wa@codingmind.com
+                    <a href="mailto:max@justcodeit.academy" className="underline">
+                      max@justcodeit.academy
                     </a>
                   </p>
                 </div>
@@ -158,8 +158,8 @@ export default function ApplyPage() {
 
               <p className="text-[var(--color-text-muted)] text-xs text-center">
                 Questions? Email{" "}
-                <a href="mailto:wa@codingmind.com" className="text-[var(--color-accent)] hover:underline">
-                  wa@codingmind.com
+                <a href="mailto:max@justcodeit.academy" className="text-[var(--color-accent)] hover:underline">
+                  max@justcodeit.academy
                 </a>
               </p>
             </form>

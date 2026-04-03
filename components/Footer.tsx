@@ -10,7 +10,7 @@ export default function Footer() {
           </a>
         </div>
         <div className="flex gap-6 font-mono text-xs">
-          <a href="mailto:wa@codingmind.com" className="hover:text-[var(--color-text)] transition-colors duration-200">Contact</a>
+          <a href="mailto:max@justcodeit.academy" className="hover:text-[var(--color-text)] transition-colors duration-200">Contact</a>
           <a href="https://ygn.ngo" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-text)] transition-colors duration-200">YGN Partner</a>
         </div>
       </div>

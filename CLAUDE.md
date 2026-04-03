@@ -32,4 +32,4 @@ Pre-launch. Deploys to Vercel.
 
 ## Environment Variables
 - `RESEND_API_KEY` — Resend API key (server-side only)
-- `CONTACT_EMAIL` — email to receive form submissions (default: wa@codingmind.com)
+- `CONTACT_EMAIL` — email to receive form submissions (default: max@justcodeit.academy)
