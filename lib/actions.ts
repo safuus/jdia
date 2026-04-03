@@ -106,7 +106,7 @@ export async function submitContactForm(
   try {
     // Send notification email
     const { error } = await resend.emails.send({
-      from: "JCIA Website <onboarding@resend.dev>",
+      from: "JCIA Website <hello@updates.justcodeit.academy>",
       to: CONTACT_EMAIL,
       subject: `[JCIA ${audienceLabel}] New inquiry from ${name}`,
       text: body,
@@ -123,7 +123,7 @@ export async function submitContactForm(
     // Fire-and-forget auto-reply — don't await, don't block the user
     resend.emails
       .send({
-        from: "Just Code It Academy <onboarding@resend.dev>",
+        from: "Just Code It Academy <hello@updates.justcodeit.academy>",
         to: email,
         subject: "We got your message — Just Code It Academy",
         text: `Hi ${name},\n\nThanks for reaching out to Just Code It Academy! We received your message and will get back to you within 1-2 business days.\n\nIn the meantime, feel free to explore our website at justcodeit.academy.\n\nBest,\nThe Just Code It Academy Team\nRedmond, WA`,
@@ -178,7 +178,7 @@ export async function submitApplication(
 
   try {
     const { error } = await resend.emails.send({
-      from: "JCIA Website <onboarding@resend.dev>",
+      from: "JCIA Website <hello@updates.justcodeit.academy>",
       to: CONTACT_EMAIL,
       subject: `[JCIA Application] ${name} — ${gradeLevel}`,
       text: body,
@@ -195,7 +195,7 @@ export async function submitApplication(
     // Fire-and-forget auto-reply
     resend.emails
       .send({
-        from: "Just Code It Academy <onboarding@resend.dev>",
+        from: "Just Code It Academy <hello@updates.justcodeit.academy>",
         to: email,
         subject: "Application received — Just Code It Academy",
         text: `Hi ${name},\n\nWe received your application to Just Code It Academy! We'll review it and get back to you within 3-5 business days.\n\nIf you have any questions in the meantime, reply to this email or reach out at max@justcodeit.academy.\n\nBest,\nThe Just Code It Academy Team\nRedmond, WA`,
