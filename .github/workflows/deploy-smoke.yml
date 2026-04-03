@@ -1,0 +1,29 @@
+name: Deploy Smoke Test
+
+on:
+  # Runs after Vercel deploys to production
+  deployment_status:
+
+jobs:
+  smoke-test:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for deploy to propagate
+        run: sleep 30
+
+      - name: Basic health check
+        run: |
+          STATUS=$(curl -sf https://www.justcodeit.academy/api/health | jq -r .status)
+          echo "Health: $STATUS"
+          [ "$STATUS" = "ok" ] || exit 1
+
+      - name: Full smoke test (sends deploy email)
+        env:
+          DEPLOY_TEST_SECRET: ${{ secrets.DEPLOY_TEST_SECRET }}
+        run: |
+          RESULT=$(curl -sf "https://www.justcodeit.academy/api/health?secret=$DEPLOY_TEST_SECRET")
+          echo "$RESULT" | jq .
+          STATUS=$(echo "$RESULT" | jq -r .status)
+          [ "$STATUS" = "ok" ] || exit 1
+          echo "Deploy email sent successfully"
