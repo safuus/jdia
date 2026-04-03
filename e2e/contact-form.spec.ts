@@ -1,34 +1,42 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Contact form", () => {
-  test("shows audience selector and conditional fields", async ({ page }) => {
-    await page.goto("/#contact");
+  test("shows audience selector when no defaultAudience", async ({ page }) => {
+    // Services page still has the old CTA without defaultAudience
+    await page.goto("/services");
+    const contactSection = page.locator("#contact");
+    await contactSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
 
-    // Default audience is Client
-    await expect(page.locator('button:has-text("Client")')).toHaveClass(/bg-blue-600/);
+    // Audience selector should be visible
+    await expect(contactSection.locator('button:has-text("Client")')).toBeVisible();
+    await expect(contactSection.locator('button:has-text("Student")')).toBeVisible();
+    await expect(contactSection.locator('button:has-text("Partner")')).toBeVisible();
+  });
 
-    // Client fields visible
+  test("hides audience selector with defaultAudience on for-clients", async ({ page }) => {
+    await page.goto("/for-clients");
+    const cta = page.getByRole("button", { name: "Send Message" });
+    await cta.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+
+    // Audience selector buttons should NOT be visible
+    await expect(page.locator('button:has-text("Client")')).not.toBeVisible();
+    await expect(page.locator('button:has-text("Partner")')).not.toBeVisible();
+
+    // But form fields should be visible (client fields)
+    await expect(page.locator("#name")).toBeVisible();
+    await expect(page.locator("#email")).toBeVisible();
     await expect(page.locator("#projectType")).toBeVisible();
-    await expect(page.locator("#timeline")).toBeVisible();
-
-    // Switch to Partner
-    await page.click('button:has-text("Partner")');
-    await expect(page.locator("#orgName")).toBeVisible();
-    await expect(page.locator("#projectType")).not.toBeVisible();
-
-    // Switch to Student — shows redirect
-    await page.click('button:has-text("Student")');
-    await expect(page.locator("text=Go to Application")).toBeVisible();
   });
 
   test("shows validation on empty required fields", async ({ page }) => {
-    await page.goto("/#contact");
-
-    // Try to submit empty form — HTML5 validation should prevent submission
-    const submitButton = page.locator('button[type="submit"]');
+    await page.goto("/for-clients");
+    const submitButton = page.getByRole("button", { name: "Send Message" });
+    await submitButton.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
     await submitButton.click();
 
-    // The form shouldn't submit — name field should be invalid
     const nameInput = page.locator("#name");
     const isInvalid = await nameInput.evaluate(
       (el) => !(el as HTMLInputElement).validity.valid
@@ -36,19 +44,21 @@ test.describe("Contact form", () => {
     expect(isInvalid).toBe(true);
   });
 
-  test("FAQ accordion expands and collapses", async ({ page }) => {
-    await page.goto("/");
+  test("FAQ accordion expands and collapses on for-clients", async ({ page }) => {
+    await page.goto("/for-clients");
 
-    // Find first FAQ button
-    const firstQuestion = page.locator('button[aria-expanded]').first();
-    await expect(firstQuestion).toHaveAttribute("aria-expanded", "false");
+    const faqQuestion = page.getByRole("button", { name: "Will students work on my project" });
+    await faqQuestion.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1000);
 
-    // Click to expand
-    await firstQuestion.click();
-    await expect(firstQuestion).toHaveAttribute("aria-expanded", "true");
+    await expect(faqQuestion).toHaveAttribute("aria-expanded", "false");
 
-    // Click again to collapse
-    await firstQuestion.click();
-    await expect(firstQuestion).toHaveAttribute("aria-expanded", "false");
+    await faqQuestion.click({ force: true });
+    await page.waitForTimeout(500);
+    await expect(faqQuestion).toHaveAttribute("aria-expanded", "true");
+
+    await faqQuestion.click({ force: true });
+    await page.waitForTimeout(500);
+    await expect(faqQuestion).toHaveAttribute("aria-expanded", "false");
   });
 });

@@ -11,18 +11,18 @@ export default function ApplyPage() {
   const [state, formAction, isPending] = useActionState(submitApplication, initialState);
 
   return (
-    <main className="bg-white text-gray-900">
+    <main className="bg-[var(--color-bg)] text-[var(--color-text)]">
       <Nav />
 
-      <section className="pt-32 pb-24 px-6">
+      <section className="pt-40 pb-28 px-6">
         <div className="max-w-2xl mx-auto">
-          <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-4">
+          <p className="font-mono text-[var(--color-accent)] text-xs uppercase tracking-[0.2em] mb-4">
             Student Application
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight leading-tight mb-4">
             Ready to build something real?
           </h1>
-          <p className="text-gray-600 text-lg mb-12 max-w-xl leading-relaxed">
+          <p className="text-[var(--color-text-muted)] text-lg mb-12 max-w-xl leading-relaxed">
             Apply to Just Code It Academy. We&apos;ll review your application and get back
             to you within 3-5 business days.
           </p>
@@ -52,7 +52,7 @@ export default function ApplyPage() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-[var(--color-text)] mb-1">
                     Full name *
                   </label>
                   <input
@@ -60,12 +60,12 @@ export default function ApplyPage() {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-sm bg-white focus:ring-2 focus:ring-[var(--color-accent)]/20 focus:border-[var(--color-accent)] outline-none"
                     placeholder="Your full name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-[var(--color-text)] mb-1">
                     Email *
                   </label>
                   <input
@@ -73,7 +73,7 @@ export default function ApplyPage() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-sm bg-white focus:ring-2 focus:ring-[var(--color-accent)]/20 focus:border-[var(--color-accent)] outline-none"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -81,14 +81,14 @@ export default function ApplyPage() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="gradeLevel" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="gradeLevel" className="block text-sm font-medium text-[var(--color-text)] mb-1">
                     Grade level *
                   </label>
                   <select
                     id="gradeLevel"
                     name="gradeLevel"
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white"
+                    className="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-sm bg-white focus:ring-2 focus:ring-[var(--color-accent)]/20 focus:border-[var(--color-accent)] outline-none"
                   >
                     <option value="">Select...</option>
                     <option value="hs-junior">High School Junior</option>
@@ -100,14 +100,14 @@ export default function ApplyPage() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="experience" className="block text-sm font-medium text-[var(--color-text)] mb-1">
                     Programming experience *
                   </label>
                   <select
                     id="experience"
                     name="experience"
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white"
+                    className="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-sm bg-white focus:ring-2 focus:ring-[var(--color-accent)]/20 focus:border-[var(--color-accent)] outline-none"
                   >
                     <option value="">Select...</option>
                     <option value="beginner">Beginner (learning basics)</option>
@@ -118,7 +118,7 @@ export default function ApplyPage() {
               </div>
 
               <div>
-                <label htmlFor="interests" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="interests" className="block text-sm font-medium text-[var(--color-text)] mb-1">
                   What do you want to learn or build?
                 </label>
                 <textarea
@@ -126,19 +126,19 @@ export default function ApplyPage() {
                   name="interests"
                   rows={3}
                   maxLength={1000}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                  className="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-sm bg-white focus:ring-2 focus:ring-[var(--color-accent)]/20 focus:border-[var(--color-accent)] outline-none resize-none"
                   placeholder="Tell us about your interests, goals, or project ideas..."
                 />
               </div>
 
               <div>
-                <label htmlFor="availability" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="availability" className="block text-sm font-medium text-[var(--color-text)] mb-1">
                   Availability
                 </label>
                 <select
                   id="availability"
                   name="availability"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white"
+                  className="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-sm bg-white focus:ring-2 focus:ring-[var(--color-accent)]/20 focus:border-[var(--color-accent)] outline-none"
                 >
                   <option value="">Select...</option>
                   <option value="after-school">After school (weekdays)</option>
@@ -151,14 +151,14 @@ export default function ApplyPage() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[var(--color-text)] text-white font-semibold py-3 rounded-lg hover:bg-[var(--color-accent)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isPending ? "Submitting..." : "Submit Application"}
               </button>
 
-              <p className="text-gray-400 text-xs text-center">
+              <p className="text-[var(--color-text-muted)] text-xs text-center">
                 Questions? Email{" "}
-                <a href="mailto:wa@codingmind.com" className="text-blue-500 hover:underline">
+                <a href="mailto:wa@codingmind.com" className="text-[var(--color-accent)] hover:underline">
                   wa@codingmind.com
                 </a>
               </p>

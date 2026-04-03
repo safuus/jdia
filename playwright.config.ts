@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: "./e2e",
   timeout: 30000,
   webServer: {
-    command: "bun run dev",
+    command: "npm run dev",
     port: 3000,
     reuseExistingServer: true,
   },

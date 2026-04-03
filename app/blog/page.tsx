@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 
 export const metadata: Metadata = {
-  title: "Blog — Just Code It Academy",
+  title: "Blog",
   description:
     "Thoughts on AI-native education, building real products with students, and the future of technical training.",
 };
@@ -48,38 +48,38 @@ export default function BlogPage() {
   const posts = getBlogPosts();
 
   return (
-    <main className="bg-white text-gray-900">
+    <main className="bg-[var(--color-bg)] text-[var(--color-text)]">
       <Nav />
 
-      <section className="pt-32 pb-24 px-6">
+      <section className="pt-40 pb-28 px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-blue-600 text-sm font-semibold uppercase tracking-widest mb-4">
+          <p className="font-mono text-[var(--color-accent)] text-xs uppercase tracking-[0.2em] mb-4">
             Blog
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+          <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight leading-tight mb-6">
             Ideas, updates, and lessons.
           </h1>
-          <p className="text-gray-600 text-lg mb-16 max-w-xl">
+          <p className="text-[var(--color-text-muted)] text-lg mb-16 max-w-xl">
             Thoughts on AI-native education, building real products with students, and what
             we&apos;re learning along the way.
           </p>
 
           {posts.length === 0 ? (
-            <div className="text-center py-16 border border-gray-200 rounded-xl">
-              <p className="text-gray-400 text-lg mb-2">No posts yet.</p>
-              <p className="text-gray-400 text-sm">Check back soon — we&apos;re working on it.</p>
+            <div className="text-center py-16 border border-[var(--color-border)] rounded-xl">
+              <p className="text-[var(--color-text-muted)] text-lg mb-2">No posts yet.</p>
+              <p className="text-[var(--color-text-muted)] text-sm">Check back soon — we&apos;re working on it.</p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-4">
               {posts.map(({ slug, title, date, summary }) => (
                 <a
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="block p-6 border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition-all"
+                  className="block p-6 border border-[var(--color-border)] rounded-xl hover:border-[var(--color-accent)]/40 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-200"
                 >
-                  <div className="text-xs text-gray-400 uppercase tracking-widest mb-2">{date}</div>
-                  <h2 className="text-xl font-bold mb-2">{title}</h2>
-                  {summary && <p className="text-gray-600 text-sm leading-relaxed">{summary}</p>}
+                  <div className="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-[0.15em] mb-2">{date}</div>
+                  <h2 className="font-display text-xl font-semibold mb-2">{title}</h2>
+                  {summary && <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">{summary}</p>}
                 </a>
               ))}
             </div>

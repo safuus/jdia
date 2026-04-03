@@ -2,6 +2,28 @@
 
 All notable changes to the Just Code It Academy website.
 
+## [0.3.0.0] - 2026-04-02 — Audience-First Redesign
+
+### Added
+- Three audience landing pages: /for-clients, /for-students (parent-first), /for-partners
+- Homepage rewritten as audience router with three distinct cards
+- FAQ component accepts items prop with per-audience FAQ filtering (lib/faq-data.ts)
+- ContactForm accepts defaultAudience prop to hide audience selector on landing pages
+- CTA accepts audience, headline, subtitle props for per-page customization
+- Scroll-triggered fade-up animations via useInView hook (lib/useInView.ts)
+- E2E visibility tests for all sections (e2e/visibility.spec.ts)
+- GitHub Actions CI pipeline (.github/workflows/ci.yml)
+- npm test scripts: test, test:e2e, test:all
+
+### Changed
+- Full visual redesign: Refined Minimal direction (General Sans + Inter Tight + JetBrains Mono)
+- Color palette: slate primary (#1e293b) + burnt orange accent (#c2410c), CSS custom properties
+- All components restyled with design system variables
+- Nav updated: For Clients, For Families, For Partners, About, Blog, Apply
+- Hero: cursor-following orb, wavy SVG underline, grid texture background
+- Section backgrounds: warm off-white (#f5f2ee) for visible section boundaries
+- Meta titles fixed: removed duplication from layout template
+
 ## [0.2.0.0] - 2026-03-22 — Website Conversion Engine
 
 ### Added
