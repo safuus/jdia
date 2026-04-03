@@ -113,10 +113,10 @@ export async function submitContactForm(
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend error:", JSON.stringify(error));
       return {
         success: false,
-        error: "Unable to send your message. Please email max@justcodeit.academy directly.",
+        error: `Email delivery failed: ${error.message || JSON.stringify(error)}. Please email max@justcodeit.academy directly.`,
       };
     }
 
