@@ -2,8 +2,18 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "wa@codingmind.com";
+
+function getResendClient(): Resend | null {
+  if (!RESEND_API_KEY) return null;
+  return new Resend(RESEND_API_KEY);
+}
+
+const MISSING_KEY_ERROR: FormState = {
+  success: false,
+  error: "Unable to send your message. Please email wa@codingmind.com directly.",
+};
 
 // ─── Types ───────────────────────────────────────────────────────────
 
@@ -87,6 +97,12 @@ export async function submitContactForm(
   if (timeline) body += `\nTimeline: ${timeline}`;
   if (orgName) body += `\nOrganization: ${orgName}`;
 
+  const resend = getResendClient();
+  if (!resend) {
+    console.error("RESEND_API_KEY not configured");
+    return MISSING_KEY_ERROR;
+  }
+
   try {
     // Send notification email
     const { error } = await resend.emails.send({
@@ -153,6 +169,12 @@ export async function submitApplication(
   }
 
   const body = `Student Application\n\nName: ${name}\nEmail: ${email}\nGrade Level: ${gradeLevel}\nExperience: ${experience}\nInterests: ${interests || "Not specified"}\nAvailability: ${availability || "Not specified"}`;
+
+  const resend = getResendClient();
+  if (!resend) {
+    console.error("RESEND_API_KEY not configured");
+    return MISSING_KEY_ERROR;
+  }
 
   try {
     const { error } = await resend.emails.send({

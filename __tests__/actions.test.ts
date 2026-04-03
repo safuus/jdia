@@ -1,5 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
+// Set RESEND_API_KEY so the client initializes in tests
+vi.stubEnv("RESEND_API_KEY", "re_test_key");
+
 // Store mock send function
 const mockSend = vi.fn();
 
@@ -97,6 +100,32 @@ describe("submitContactForm", () => {
     const result = await submitContactForm(initialState, fd);
     expect(result.success).toBe(false);
     expect(result.error).toContain("wa@codingmind.com");
+  });
+});
+
+describe("submitContactForm — missing API key regression", () => {
+  it("returns friendly error instead of 500 when RESEND_API_KEY is missing", async () => {
+    // Temporarily remove the API key
+    const original = process.env.RESEND_API_KEY;
+    delete process.env.RESEND_API_KEY;
+
+    // Re-import to get fresh module with no key
+    vi.resetModules();
+    vi.stubEnv("RESEND_API_KEY", "");
+    const fresh = await import("@/lib/actions");
+
+    const fd = makeFormData({
+      name: "Test User",
+      email: "test@example.com",
+      message: "Hello",
+      audience: "client",
+    });
+    const result = await fresh.submitContactForm(initialState, fd);
+    expect(result.success).toBe(false);
+    expect(result.error).toContain("wa@codingmind.com");
+
+    // Restore
+    process.env.RESEND_API_KEY = original;
   });
 });
 
