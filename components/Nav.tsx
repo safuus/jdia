@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 const navLinks = [
   { href: "/for-clients", label: "For Clients" },
@@ -29,10 +30,10 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/" className="font-display font-semibold text-lg tracking-tight">
+        <Link href="/" className="font-display font-semibold text-lg tracking-tight">
           Just Code It{" "}
           <span className="text-[var(--color-accent)]">Academy</span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-text-muted)]">

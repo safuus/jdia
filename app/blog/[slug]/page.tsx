@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import fs from "fs";
@@ -86,12 +87,12 @@ export default async function BlogPost({ params }: Props) {
 
       <article className="pt-40 pb-28 px-6">
         <div className="max-w-3xl mx-auto">
-          <a
+          <Link
             href="/blog"
             className="text-[var(--color-accent)] text-sm font-medium hover:underline mb-8 inline-block"
           >
             &larr; Back to Blog
-          </a>
+          </Link>
 
           <div className="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-[0.15em] mb-4">
             {date}
