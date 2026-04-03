@@ -116,7 +116,7 @@ export async function submitContactForm(
       console.error("Resend error:", JSON.stringify(error));
       return {
         success: false,
-        error: `Email delivery failed: ${error.message || JSON.stringify(error)}. Please email max@justcodeit.academy directly.`,
+        error: "Unable to send your message. Please email max@justcodeit.academy directly.",
       };
     }
 
